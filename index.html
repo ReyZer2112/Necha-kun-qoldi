@@ -17,24 +17,21 @@
       background: #f5f5f5;
       color: #000000;
     }
-    h1 {
-      margin-bottom: 10px;
-    }
+    h1 { margin-bottom: 10px; }
     input, button {
       padding: 10px;
       font-size: 16px;
       margin: 5px;
       border-radius: 5px;
       border: none;
+      transition: background 0.2s;
     }
     button {
       background-color: #00aaff;
       color: white;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #008ecc;
-    }
+    button:hover { background-color: #008ecc; }
     #natija {
       font-size: 28px;
       margin-top: 30px;
@@ -51,21 +48,16 @@
       100% { transform: translateX(0); }
     }
     @media (max-width: 600px) {
-      #natija {
-        font-size: 22px;
-      }
-      input, button {
-        width: 90%;
-      }
+      #natija { font-size: 22px; }
+      input, button { width: 90%; }
     }
 
-    /* MODAL STYLES */
+    /* MODAL */
     .modal {
       display: none;
       position: fixed;
       top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       background: rgba(0, 0, 0, 0.7);
       justify-content: center;
       align-items: center;
@@ -86,9 +78,7 @@
       max-height: 90vh;
       overflow-y: auto;
     }
-    .modal-content h2 {
-      margin-top: 0;
-    }
+    .modal-content h2 { margin-top: 0; }
     .close-btn {
       position: absolute;
       top: 10px;
@@ -101,159 +91,199 @@
       height: 30px;
       font-size: 18px;
       cursor: pointer;
+      transition: background 0.3s;
+    }
+    .close-btn:hover { background: #008ecc; }
+
+    /* FOLLOW */
+    .follow-us { margin-top: 20px; }
+    .social-icons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      justify-items: center;
+      align-items: center;
+    }
+    .social-icons a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      transition: transform 0.2s, filter 0.2s;
+    }
+    .social-icons a img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-bottom: 5px;
+    }
+    .social-icons a span { font-size: 12px; text-align: center; }
+    .social-icons a:hover { transform: scale(1.1); filter: brightness(1.2); }
+
+    @media (max-width: 600px) {
+      .social-icons { gap: 10px; }
     }
 
-    .social-buttons {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-    .social-buttons button {
-      background-color: #333;
-      color: white;
-      padding: 10px 14px;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .social-buttons button:hover {
-      background-color: #555;
-    }
+    /* Social block */
+  .follow-us, .volume-control {
+    text-align:center; background:linear-gradient(135deg,#1f1f1f,#2c2c2c);
+    color:#fff; padding:20px; border-radius:15px; max-width:450px;
+    margin:20px auto; box-shadow:0 0 15px rgba(0,0,0,0.5); font-family:Arial,sans-serif;
+  }
+  .follow-us h2, .volume-control h2 {
+    font-size:22px; margin-bottom:10px; border-bottom:1px solid #555; padding-bottom:5px;
+  }
+  .social-icons, .volume-buttons { display:flex; justify-content:center; flex-wrap:wrap; gap:15px; }
+  .social-icons a img, .volume-buttons button { width:45px; height:45px; transition:0.3s; }
+  .social-icons a:hover img { transform:scale(1.2); filter:brightness(1.3); cursor:pointer; }
+  .volume-buttons button { padding:10px 15px; border-radius:8px; background:#333; color:#fff; cursor:pointer; transition:all 0.3s; }
+  .volume-buttons button:hover { background:#555; transform:scale(1.1); }
   </style>
 </head>
 <body>
 
-  <h1>Necha vaqt qoldi?</h1>
+<h1>Necha vaqt qoldi?</h1>
 
-  <!-- Rejim -->
-  <div style="margin-bottom: 10px;">
-    <label>
-      <input type="checkbox" onchange="toggleTheme()"> 🌗 Tungi / Kungi rejim
-    </label>
-  </div>
+<div style="margin-bottom: 10px;">
+  <label><input type="checkbox" onchange="toggleTheme()"> 🌗 Tungi / Kungi rejim</label>
+</div>
 
-  <p>Sanani tanlang:</p>
-  <input type="date" id="targetDate">
-  <button onclick="startTimer()">Hisoblash</button>
+<p>Sanani tanlang:</p>
+<input type="date" id="targetDate">
+<button onclick="startTimer()">Hisoblash</button>
 
-  <div id="natija">Sana tanlanmagan</div>
+<div id="natija">Sana tanlanmagan</div>
 
-  <div style="margin-top: 20px;">
-    <button onclick="openModal()">👤 Yaratuvchi haqida</button>
-  </div>
+<div style="margin-top: 20px;">
+  <button onclick="openModal()">👤 Yaratuvchi haqida</button>
+</div>
 
-  <!-- Modal -->
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">×</button>
-      <h2>👤 Yaratuvchi haqida</h2>
-      <p style="text-align: left;">
-        ╔═══════ஜ۩۞۩ஜ═══════╗<br><br>
-        MENI QIDIRISHING SHART EMAS, <br>
-        MANA LINKLARIM:<br><br>
-        🌐 Instagram: @reyzer2112<br>
-        🔗 https://www.instagram.com/reyzer2112<br><br>
-        🌐 YouTube: @ReyZer-2112<br>
-        🔗 https://www.youtube.com/@ReyZer-2112<br><br>
-        🌐 Telegram: @ReyZer2112<br><br>
-        🙋🏻 Snapchat: reyzer2112<br>
-        🔗 https://www.snapchat.com/add/reyzer2112?share_id=Ha5ktm0sdkc&locale=ru-RU<br><br>
-        🎮 Roblox: Zoh_1rshox020315<br>
-        🔗 https://www.roblox.com/users/4669071068/profile<br><br>
-        🌐 Discord: reyzer2112<br>
-        🔗 http://discord.gg/reyzer2112<br><br>
-        ╚═══════ஜ۩۞۩ஜ═══════╝
-      </p>
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">×</button>
+    <h2>👤 Yaratuvchi haqida</h2>
+    <p style="text-align: left; white-space: pre-line;">
+╔═══════ஜ۩۞۩ஜ═══════╗
+MENI QIDIRISHING SHART EMAS,
+MANA LINKLARIM:
 
-      <div class="social-buttons">
-        <button onclick="window.open('https://www.instagram.com/reyzer2112')">📷 Instagram</button>
-        <button onclick="window.open('https://www.youtube.com/@ReyZer-2112')">▶️ YouTube</button>
-        <button onclick="window.open('https://t.me/ReyZer2112')">✈️ Telegram</button>
-        <button onclick="window.open('https://www.snapchat.com/add/reyzer2112?share_id=Ha5ktm0sdkc&locale=ru-RU')">👻 Snapchat</button>
-        <button onclick="window.open('https://www.roblox.com/users/4669071068/profile')">🎮 Roblox</button>
-        <button onclick="window.open('http://discord.gg/reyzer2112')">💬 Discord</button>
+🌐 Instagram: @reyzer2112
+🔗 https://www.instagram.com/reyzer2112
+
+🌐 YouTube: @ReyZer-2112
+🔗 https://www.youtube.com/@ReyZer-2112
+
+🌐 Telegram: @ReyZer2112
+
+🙋🏻 Snapchat: reyzer2112
+🔗 https://www.snapchat.com/add/reyzer2112
+
+🎮 Roblox: Zoh_1rshox020315
+🔗 https://www.roblox.com/users/4669071068/profile
+
+🌐 Discord: reyzer2112
+🔗 http://discord.gg/reyzer2112
+╚═══════ஜ۩۞۩ஜ═══════╝
+    </p>
+
+    <div class="follow-us">
+      <h2>📢 Bizni kuzatib boring</h2>
+      <div class="social-icons">
+        <a href="https://instagram.com/reyzer2112" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"><span>Instagram</span>
+        </a>
+        <a href="https://www.youtube.com/@ReyZer-2112" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"><span>YouTube</span>
+        </a>
+        <a href="https://www.snapchat.com/add/reyzer2112" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111703.png" alt="Snapchat"><span>Snapchat</span>
+        </a>
+        <a href="https://www.roblox.com/users/4669071068/profile" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/743/743927.png" alt="Roblox"><span>Roblox</span>
+        </a>
+        <a href="https://t.me/ReyZer2112" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram"><span>Telegram</span>
+        </a>
+        <a href="http://discord.gg/reyzer2112" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord"><span>Discord</span>
+        </a>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Ovoz -->
-  <audio id="errorSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+<audio id="errorSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
 
-  <script>
-    let interval;
+<script>
+let interval;
 
-    function formatUzDate(date) {
-      let k = date.getDate().toString().padStart(2, '0');
-      let o = (date.getMonth() + 1).toString().padStart(2, '0');
-      let y = date.getFullYear();
-      return `${k}.${o}.${y}`;
-    }
+function formatUzDate(date) {
+  let k = date.getDate().toString().padStart(2, '0');
+  let o = (date.getMonth() + 1).toString().padStart(2, '0');
+  let y = date.getFullYear();
+  return `${k}.${o}.${y}`;
+}
 
-    function startTimer() {
+function startTimer() {
+  clearInterval(interval);
+  const userInput = document.getElementById("targetDate").value;
+  const natija = document.getElementById("natija");
+  const audio = document.getElementById("errorSound");
+
+  if (!userInput) {
+    natija.innerHTML = '<span style="color: red; font-weight: bold;">⚠️ Iltimos, sana tanlang!</span>';
+    natija.classList.add("chayqal");
+    audio.play();
+    setTimeout(() => natija.classList.remove("chayqal"), 500);
+    return;
+  }
+
+  const targetDate = new Date(userInput);
+  targetDate.setHours(0,0,0,0);
+
+  if (targetDate < new Date().setHours(0,0,0,0)) {
+    natija.innerHTML = '<span style="color: orange; font-weight: bold;">⚠️ Kelajakdagi sanani tanlang!</span>';
+    natija.classList.add("chayqal");
+    audio.play();
+    setTimeout(() => natija.classList.remove("chayqal"), 500);
+    return;
+  }
+
+  interval = setInterval(() => {
+    const now = new Date();
+    const difference = targetDate - now;
+
+    if (difference <= 0) {
       clearInterval(interval);
-      const userInput = document.getElementById("targetDate").value;
-      const natija = document.getElementById("natija");
-      const audio = document.getElementById("errorSound");
-
-      if (!userInput) {
-        natija.innerHTML = '<span style="color: red; font-weight: bold;">⚠️ Iltimos, sana tanlang!</span>';
-        natija.classList.add("chayqal");
-        audio.play();
-        setTimeout(() => {
-          natija.classList.remove("chayqal");
-        }, 500);
-        return;
-      }
-
-      const targetDate = new Date(userInput);
-      targetDate.setHours(0, 0, 0, 0);
-
-      interval = setInterval(() => {
-        const now = new Date();
-        const difference = targetDate - now;
-
-        if (difference <= 0) {
-          clearInterval(interval);
-          natija.innerText = "⏰ Tugadi!";
-          natija.style.color = "#00ff00";
-          return;
-        }
-
-        const totalSeconds = Math.floor(difference / 1000);
-        const kun = Math.floor(totalSeconds / (3600 * 24));
-        const soat = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-        const minut = Math.floor((totalSeconds % 3600) / 60);
-        const sekund = totalSeconds % 60;
-
-        natija.innerHTML = `
-          <div>${formatUzDate(targetDate)} gacha qolgan vaqt:</div><br>
-          <span>${kun.toString().padStart(2, '0')} KUN</span> :
-          <span>${soat.toString().padStart(2, '0')} SOAT</span> :
-          <span>${minut.toString().padStart(2, '0')} DAQIQA</span> :
-          <span style="color: red;">${sekund.toString().padStart(2, '0')} SONIYA</span>
-        `;
-        natija.style.color = "";
-      }, 1000);
+      natija.innerText = "⏰ Tugadi!";
+      natija.style.color = "#39ff14";
+      return;
     }
 
-    function toggleTheme() {
-      document.body.classList.toggle("light-mode");
-    }
+    const totalSeconds = Math.floor(difference / 1000);
+    const kun = Math.floor(totalSeconds / (3600*24));
+    const soat = Math.floor((totalSeconds % (3600*24)) / 3600);
+    const minut = Math.floor((totalSeconds % 3600)/60);
+    const sekund = totalSeconds % 60;
 
-    function openModal() {
-      document.getElementById("myModal").style.display = "flex";
-    }
+    natija.innerHTML = `
+      <div style="color:#7105f5; font-weight:bold;">
+        ${formatUzDate(targetDate)} gacha qolgan vaqt:
+      </div><br>
+      <span style="color:green; font-weight:bold;">${kun.toString().padStart(2,'0')} KUN</span> :
+      <span style="color:#2196F3; font-weight:bold;">${soat.toString().padStart(2,'0')} SOAT</span> :
+      <span style="color:#FFC107; font-weight:bold;">${minut.toString().padStart(2,'0')} DAQIQA</span> :
+      <span style="color:red; font-weight:bold;">${sekund.toString().padStart(2,'0')} SONIYA</span>
+    `;
+  }, 1000);
+}
 
-    function closeModal() {
-      document.getElementById("myModal").style.display = "none";
-    }
-  </script>
+function toggleTheme() { document.body.classList.toggle("light-mode"); }
+function openModal() { document.getElementById("myModal").style.display = "flex"; }
+function closeModal() { document.getElementById("myModal").style.display = "none"; }
+</script>
 
 </body>
 </html>
