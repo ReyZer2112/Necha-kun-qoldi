@@ -34,27 +34,44 @@
       margin-bottom: 30px;
     }
 
+* {
+  -webkit-tap-highlight-color: transparent; /* Mobil brauzerlarda bosgandagi ko'k rangni o'chiradi */
+  -webkit-touch-callout: none; /* iOS Safari-da kontekst menyuni (copy/save) o'chiradi */
+}
+
+.theme-switch, button {
+  user-select: none; 
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none;
+}
+
     .theme-switch {
-      --toggle-size: 13px;
-      --container-width: 5.625em;
-      --container-height: 2.5em;
-      --container-radius: 6.25em;
-      --container-light-bg: #3D7EAE;
-      --container-night-bg: #1D1F2C;
-      --circle-container-diameter: 3.375em;
-      --sun-moon-diameter: 2.125em;
-      --sun-bg: #ECCA2F;
-      --moon-bg: #C4C9D1;
-      --spot-color: #959DB1;
-      --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
-      --stars-color: #fff;
-      --clouds-color: #F3FDFF;
-      --back-clouds-color: #AACADF;
-      --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
-      --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
-      display: inline-block;
-      position: relative;
-    }
+  --toggle-size: 13px;
+  --container-width: 5.625em;
+  --container-height: 2.5em;
+  --container-radius: 6.25em;
+  --container-light-bg: #3D7EAE;
+  --container-night-bg: #1D1F2C;
+  --circle-container-diameter: 3.375em;
+  --sun-moon-diameter: 2.125em;
+  --sun-bg: #ECCA2F;
+  --moon-bg: #C4C9D1;
+  --spot-color: #959DB1;
+  --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
+  --stars-color: #fff;
+  --clouds-color: #F3FDFF;
+  --back-clouds-color: #AACADF;
+  --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
+  --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
+  display: inline-block;
+  position: relative;
+  
+  /* MANA SHU QISMI KO'K RANGNI YO'QOTADI */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
 
     .theme-switch, .theme-switch *, .theme-switch *::before, .theme-switch *::after {
       box-sizing: border-box;
@@ -213,7 +230,7 @@
   justify-content: center;
   flex-wrap: nowrap; /* Pastga tushmaslik */
   gap: 5px; 
-  overflow-x: auto; /* Sig'masa suriladi */
+  overflow-x: hidden; /* Sig'masa suriladi */
   padding-bottom: 10px;
 }
     .close-btn {
@@ -272,6 +289,7 @@
   transform: scale(1.1); 
   filter: brightness(1.2); 
 }
+
     @media (max-width: 600px) {
       #natija { font-size: 22px; }
       input, button { width: 90%; }
