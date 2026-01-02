@@ -224,15 +224,7 @@
   box-shadow: 0 5px 30px rgba(0,0,0,0.5);
 }
 
-/* Ijtimoiy tarmoqlarni mobil qurilmalarda bir qatorda saqlash */
-.social-icons { 
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap; /* Pastga tushmaslik */
-  gap: 5px; 
-  overflow-x: hidden; /* Sig'masa suriladi */
-  padding-bottom: 10px;
-}
+
     .close-btn {
       position: absolute; top: 10px; right: 15px; background: red; color: white;
       border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 18px; cursor: pointer;
@@ -256,12 +248,6 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
-.social-icons { 
-  display: flex;          /* Tugmalarni yonma-yon qilish */
-  justify-content: center; /* Markazga yig'ish */
-  flex-wrap: nowrap;        /* Sig'masa pastga tushadi */
-  gap: 0px;              /* Tugmalar orasidagi masofa */
-}
 
 .social-icons a { 
   display: flex; 
@@ -270,8 +256,9 @@
   text-decoration: none; 
   color: white; 
   transition: 0.3s; 
-  width: 75px;            /* Tugma kengligi */
+  width: 75px;
 }
+  
 
 .social-icons a img { 
   width: 45px; 
@@ -295,6 +282,38 @@
       input, button { width: 90%; }
       .social-icons { gap: 10px; }
     }
+
+.modal-content a {
+  word-break: break-all;
+}
+
+
+/* === SOCIAL ICONS (ASOSIY) === */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap; /* 💻 KOMPYUTERDA HECH QACHON TUSHMAYDI */
+}
+
+/* === FAQAT TELEFONLAR UCHUN === */
+@media (max-width: 600px) {
+  .social-icons {
+    flex-wrap: wrap; /* 📱 TELEFONDA PASTGA TUSHADI */
+  }
+}
+
+/* === ICON === */
+.social-icons a {
+  width: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+
   </style>
 </head>
 <body>
